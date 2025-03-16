@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aech_for_hackathon-2025</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h3><b>WELCOME TO AECH FOR HACKATHON 2025</b></h3>
+        <p>register for an exciting coding competition</p>
+        <a href="reg.html">
+            <button>REGISTER NOW</button>
+        </a>
+        <h4>COUNTDOWN: <span id="countdown"></span></h4>
+        <a href="rabout.html">
+            <button>ABOUT</button>
+        </a>
+    </div>
+    <script>
+        function countdown() {
+            const eventDate = new Date("2025-05-01T00:00:00").getTime();
+            setInterval(() => {
+                const now = new Date().getTime();
+                const timeLeft = eventDate - now;
+                
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                
+                document.getElementById("countdown").innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            }, 1000);
+        }
+        countdown();
+    </script>
+</body>
+</html>
