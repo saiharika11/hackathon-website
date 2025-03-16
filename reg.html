@@ -8,31 +8,54 @@
 </head>
 <body>
     <h2>REGISTRATION</h2>
-    <form action="https://formspree.io/f/mzzezggz" method="POST" enctype="application/json">
-        <label>name: </label>
-        <input type="text" id="name" placeholder="name" required>
+    <form id="registrationForm">
+        <label>Name:</label>
+        <input type="text" id="name" name="name" placeholder="Your Name" required>
         <br>
-        <label>email: </label>
-        <input type="email" id="email" placeholder="emailid@gmail.com" required>
+        <label>Email:</label>
+        <input type="email" id="email" name="email" placeholder="email@gmail.com" required>
         <br>
-        <label>mobile: </label>
-        <input type="number" id="mobile" placeholder="0000000000" required>
+        <label>Mobile:</label>
+        <input type="number" id="mobile" name="mobile" placeholder="0000000000" required>
         <br>
-        <button type="submit" onclick="register()">register</button>
+        <button type="button" onclick="register()">Register</button>
         <p id="message"></p>
     </form>
-<script>
-    function register(){
-        const name= document.getElementById("name").value;
-        const email= document.getElementById("email").value;
-        const mobile= document.getElementById("mobile").value;
-        if(name && email && mobile){
-            document.getElementById("message").innerText=`thank you for registering, ${name}!!`;
+    
+    <script>
+    function register() {
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const mobile = document.getElementById("mobile").value;
+    
+        if (name && email && mobile) {
+            document.getElementById("message").innerText = `Thank you for registering, ${name}!!`;
+    
+            // Prepare form data
+            const formData = new FormData();
+            formData.append("name", name);
+            formData.append("email", email);
+            formData.append("mobile", mobile);
+    
+            // Send data to Formspree
+            fetch("https://formspree.io/f/mzzezggz", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    document.getElementById("message").innerText = "Registration successful!";
+                } else {
+                    document.getElementById("message").innerText = "Something went wrong!";
+                }
+            })
+            .catch(error => {
+                document.getElementById("message").innerText = "Error submitting form.";
+            });
+        } else {
+            document.getElementById("message").innerText = "Please enter valid details.";
         }
-        else{
-            document.getElementById("message").innerText=`please enter valid details.`;
-        }
-    }
+    }  
 </script>
 </body>
 </html>
