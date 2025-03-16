@@ -8,17 +8,19 @@
 </head>
 <body>
     <h2>REGISTRATION</h2>
-    <label>name: </label>
-    <input type="text" id="name" placeholder="name" required>
-    <br>
-    <label>email: </label>
-    <input type="email" id="email" placeholder="emailid@gmail.com" required>
-    <br>
-    <label>mobile: </label>
-    <input type="number" id="mobile" placeholder="0000000000" required>
-    <br>
-    <button onclick="register()">register</button>
-    <p id="message"></p>
+    <form action="https://formspree.io/f/mzzezggz" method="POST">
+        <label>name: </label>
+        <input type="text" id="name" placeholder="name" required>
+        <br>
+        <label>email: </label>
+        <input type="email" id="email" placeholder="emailid@gmail.com" required>
+        <br>
+        <label>mobile: </label>
+        <input type="number" id="mobile" placeholder="0000000000" required>
+        <br>
+        <button onclick="register()">register</button>
+        <p id="message"></p>
+    </form>
 </body>
 <script>
     function register(){
